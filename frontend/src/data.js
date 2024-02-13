@@ -1,0 +1,25 @@
+const data = [
+    {
+        id: 1,
+        image: "https://www.travelandleisure.com/thmb/92Ethj37l6Mp9KuQroXEhQyqedw=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/hanalei-bay-kauai-hawaii-WRLDBEACH0421-02a0c8c3ed7748db843758f13c61b61b.jpg",
+        heading: "Discover Paradise: Hanalei Bay, Where Serenity Meets Adventure",
+        para: "Nestled on Hawaii's Garden Isle, Hanalei Bay enchants with its golden sands, turquoise waters, and lush surroundings. Whether relaxing on the beach or exploring the Napali Coast, it's a haven for adventure and serenity seekers alike",
+        longpara: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth. Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar. The Big Oxmox advised her not to do so, because there were thousands of bad Commas, wild Question Marks and devious Semikoli, but the Little Blind Text didn’t listen. She packed her seven versalia, put her initial into the belt and made herself on the way. When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown"
+    },
+    {
+        id: 2,  
+        image: "https://www.travelandleisure.com/thmb/H3G1IDWUxJxOgqrlNBiG2Ev5VS4=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/intro-grayton_beach_sunset_0-2000-fd27efa3b1064449aa87b3981b68e095.jpg",
+        heading: "Grayton Beach, Florida: Where Paradise Meets Pristine Shores",
+        para: "Grayton Beach, Florida, boasts pristine white sands, emerald waters, and a laid-back atmosphere. Nestled along the Gulf Coast, it offers the perfect escape for sunbathing, swimming, and coastal strolls. Experience the beauty of Grayton Beach and unwind in its idyllic coastal charm",
+        longpara: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth. Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar. The Big Oxmox advised her not to do so, because there were thousands of bad Commas, wild Question Marks and devious Semikoli, but the Little Blind Text didn’t listen. She packed her seven versalia, put her initial into the belt and made herself on the way. When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown"
+    },
+    {
+        id: 3,
+        image: "https://www.travelandleisure.com/thmb/c5V3PZBXsyqS65C0_l9NRRWCVxA=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/TAL-cannon-beach-BEACHBUMIPOG1123-6d9e43a42cc34db9b491b4dc8f490f17.jpg",
+        heading: "Cannon Beach, Oregon: Where Nature's Majesty",
+        para: "Cannon Beach, Oregon, captivates with its rugged coastline, iconic Haystack Rock, and expansive sandy shores. Nestled against the backdrop of dramatic cliffs and lush forests, it offers an idyllic escape for beachcombing, tidepooling, and admiring stunning Pacific Ocean sunsets.",
+        longpara: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth. Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar. The Big Oxmox advised her not to do so, because there were thousands of bad Commas, wild Question Marks and devious Semikoli, but the Little Blind Text didn’t listen. She packed her seven versalia, put her initial into the belt and made herself on the way. When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown"
+    }
+]
+
+export default data;
