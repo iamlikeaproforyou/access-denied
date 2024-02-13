@@ -1,13 +1,13 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Navbar = () => {
   return (
     <navbar className='navigation'>
-        <h1 className='logo-text'>Access-Denied</h1>
+        <h1><Link to="/" className='logo-text'>Access-Denied</Link></h1>
         <ul className='list'>
-            <li className='list-item'>Home</li>
-            <li className='list-item'>Blog</li>
-            <li className='list-item login'>Login</li>
+            <li><Link to="/" className='list-item'>Blog</Link></li>
+            <li><Link to="/login" className='list-item login'>Login</Link></li>
         </ul>
     </navbar>
   )

@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { Link } from 'react-router-dom'
 const Card = ({data}) => {
     return (
         <div className="card">
@@ -10,7 +10,7 @@ const Card = ({data}) => {
                 <h3>{data.heading}</h3>
                 <p>{data.para}</p>
             </div>
-            <button className='read-more'>read more</button>
+            <Link to={`/blog/${data.id}`}><button className='read-more'>read more</button></Link>
         </div>
     )
 }
