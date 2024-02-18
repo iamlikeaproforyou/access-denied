@@ -7,7 +7,7 @@ const Navbar = () => {
         <h1><Link to="/" className='logo-text'>Access-Denied</Link></h1>
         <ul className='list'>
             <li><Link to="/" className='list-item'>Blog</Link></li>
-            <li><Link to="/login" className='list-item login-btn'>Login</Link></li>
+            <li><Link to="/auth" className='list-item login-btn'>Login</Link></li>
         </ul>
     </navbar>
   )

@@ -1,22 +1,32 @@
 import React from 'react'
-import data from '../data'
 import { useParams } from 'react-router-dom';
+import useDataById from '../hooks/requestDataById';
+
+import Error from '../components/error';
 
 const Blog = () => {
   const { id } = useParams('id')
-  const blog = data[id-1];
-  return (
-    <div className='blog'>
+  const blog = useDataById(id);
+  if(!blog.error){
+    return (
+      <div className='blog'>
         <div>
-            <img src={`${blog.image}`} alt=""/>
+          <img src={`${blog.image}`} alt="" />
         </div>
         <div>
-            <h2>{blog.heading}</h2>
-            <p>{blog.para}</p>
-            <p>{blog.longpara}</p>
+          <h2>{blog.heading}</h2>
+          <p>{blog.para}</p>
+          <p>{blog.longpara}</p>
         </div>
-    </div>
-  )
+      </div>
+    )
+  }
+  else{
+    return(
+      <Error error={blog.error} />
+    )
+  }
+  
 }
 
 export default Blog

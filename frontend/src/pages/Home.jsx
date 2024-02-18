@@ -1,8 +1,10 @@
 import React from 'react'
 import Card from '../components/Card'
-import data from '../data'
+import useData from '../hooks/useData'
 
 const Home = () => {
+  const data = useData();
+  
   return (
     <div className='cards-container'>
       {data.map((index) => {
@@ -10,6 +12,7 @@ const Home = () => {
       })}
     </div>
   )
+  
 }
 
 export default Home
