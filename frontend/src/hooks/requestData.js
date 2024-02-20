@@ -1,4 +1,4 @@
-const api_url = `https://localhost:8000`
+const api_url = `https://localhost:8000/api`
 
 async function httpReqData() {
     const res = await fetch(`${api_url}/`)

@@ -21,30 +21,28 @@ function checkLoggedIn(req , res , next){
 }
 
 // app.use(morgan('combined'));
-// app.use(helmet())
-// app.use(helmet.contentSecurityPolicy({
-//     directives: {
-//         defaultSrc: ['self'],
-//         imgSrc: ['self' , 'https:']
-//     }
-// }))
+app.use(helmet())
+app.use(helmet.contentSecurityPolicy({
+    directives: {
+        defaultSrc: ['self'],
+        imgSrc: ['self' , 'https:']
+    }
+}))
 app.use(cors({
     origin: 'http://localhost:3000'
 }))
+
 app.use(express.json());
-// app.use(express.static(path.join(__dirname , '..' , 'public')));
-
-app.get('/' , (req , res) => {
-    return res.status(200).json(data);
+app.use(express.static(path.join(__dirname , '..' , 'public')));
+app.get('/api/' , (req , res) => {
+    res.status(200).json(data); 
 })
-app.get('/blog/:id' , checkLoggedIn ,  (req , res) => {
+app.get('/api/blog/:id' , checkLoggedIn ,  (req , res) => {
     const id = req.params.id;
-    return res.status(201).json(data[id-1]);
+    res.status(201).json(data[id-1]);
 })
-// app.use('/*' , (req , res) => {
-//     console.log('endpoint hit')
-//     res.sendFile(path.join(__dirname , '..' , 'public' , 'index.html'));
-// })
-
+app.use('/*' , (req , res) => {
+    return res.sendFile(path.join(__dirname , '..' , 'public' , 'index.html'));
+})
 
 module.exports = app;
