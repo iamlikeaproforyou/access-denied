@@ -1,10 +1,8 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
-  const navigate = useNavigate()
   const redirectToGoogle = () => {
-    navigate("/auth/google") 
+    window.open("https://localhost:8000/auth/google" , "_self") 
   }
   return (
     <div className="login">
