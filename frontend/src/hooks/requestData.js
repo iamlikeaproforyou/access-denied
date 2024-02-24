@@ -1,4 +1,4 @@
-const api_url = `https://localhost:8000/api`
+const api_url = `/api`
 
 async function httpReqData() {
     const res = await fetch(`${api_url}/`)
@@ -11,8 +11,15 @@ async function httpReqDataByid(id) {
     const fetchedData = await res.json();
     return fetchedData;
 }
+async function httpGetUserData() {
+    const res = await fetch(`${api_url}/user`)
+    const fetchedData = await res.json();
+    return fetchedData;
+}
+
 
 export default {
     httpReqData,
-    httpReqDataByid
+    httpReqDataByid,
+    httpGetUserData
 }
