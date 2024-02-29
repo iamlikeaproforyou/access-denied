@@ -65,7 +65,7 @@ passport.deserializeUser((user , done) => {
 
 // setting up google authentication
 
-app.get('/auth/google' , passport.authenticate('google' , { scope: ['email']}))
+app.get('/auth/google' , passport.authenticate('google' , {scope: ['email']}))
 app.get('/auth/google/callback' , passport.authenticate('google' , {
     failureRedirect: 'http://localhost:3000/login',
     successRedirect: 'http://localhost:3000/',
@@ -79,8 +79,8 @@ app.get('/auth/google/callback' , passport.authenticate('google' , {
 
 app.get('/auth/github' , passport.authenticate('github' , {scope: ['user:email']}));
 app.get('/auth/github/callback' , passport.authenticate('github' , {
-    failureRedirect: 'http://localhost:3000/login',
-    successRedirect: 'http://localhost:3000/',
+    failureRedirect: '/login',
+    successRedirect: '/',
     session: true
 }) , 
 (req , res) => {
@@ -105,7 +105,7 @@ app.get('/api/user' , (req , res) => {
 // Logging out middleware
 app.get('/auth/logout' , (req  , res) => {
     req.logout();
-    return res.redirect('http://localhost:3000/')
+    return res.redirect('/')
 })
 // app.use('/*' , (req , res) => {
 //     return res.sendFile(path.join(__dirname , '..' , 'public' , 'index.html'));

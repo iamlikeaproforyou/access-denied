@@ -3,9 +3,14 @@ import { Link } from 'react-router-dom'
 import useUserData from '../hooks/requestUserData';
 const Navbar = () => {
   const profile = useUserData();
-  console.log(profile)
-  const handleLogout = () => {
-    window.location.href = 'https://localhost:8000/auth/logout' 
+  const handleLogout = async () => {
+    try {
+      await fetch('/auth/logout')
+      window.location.href = '/'
+    }
+    catch(err) {
+      console.log(err);
+    }
   }
   return (
     <div className='navigation'>
@@ -14,7 +19,7 @@ const Navbar = () => {
             {profile.id? <li><img src={profile.photo} alt="" className='profile-photo'/></li>: <li></li>}
             <li><Link to="/" className='list-item'>Blog</Link></li>
             {profile.id ? 
-              <li><Link className='list-item login-btn' onClick={handleLogout}>Logout</Link></li>
+              <li><Link className='list-item login-btn' onClick={() => {handleLogout()}}>Logout</Link></li>
               :
               <li><Link to="/auth" className='list-item login-btn'>Login</Link></li>
             }

@@ -1,18 +1,25 @@
 import React from 'react'
 
 const Login = () => {
-  const redirectToGoogle = () => {
-    window.open("https://localhost:8000/auth/google" , "_self") 
+  const redirectToGoogle = async () => {
+    await fetch('/auth/google')
+    window.location.href = '/'
   }
-  const redirectToGithub = () => {
-    window.open("https://localhost:8000/auth/github" , "_self")
+  const redirectToGithub = async () => {
+    try {
+      await fetch('/auth/github')
+      window.location.href = '/'
+    }
+    catch(err) {
+      console.log(err)
+    }
   }
   return (
     <div className="login">
       <div className="login-container">
         <div className="methods">
-          <button onClick={redirectToGithub}>GITHUB</button>
-          <button onClick={redirectToGoogle}>GOOGLE</button>
+          <button onClick={() => {redirectToGithub()}}>GITHUB</button>
+          <button onClick={() => {redirectToGoogle()}}>GOOGLE</button>
           <button>FACEBOOK</button>
         </div>
         <div >
