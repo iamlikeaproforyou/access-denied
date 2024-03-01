@@ -61,14 +61,14 @@ passport.deserializeUser((user , done) => {
     done(null , user)
 })
 
-// app.use(express.static(path.join(__dirname , '..' , 'public')));
+app.use(express.static(path.join(__dirname , '..' , 'public')));
 
 // setting up google authentication
 
 app.get('/auth/google' , passport.authenticate('google' , {scope: ['email']}))
 app.get('/auth/google/callback' , passport.authenticate('google' , {
-    failureRedirect: 'http://localhost:3000/login',
-    successRedirect: 'http://localhost:3000/',
+    failureRedirect: '/login',
+    successRedirect: '/',
     session: true
 }) , 
 (req , res) => {
@@ -107,8 +107,8 @@ app.get('/auth/logout' , (req  , res) => {
     req.logout();
     return res.redirect('/')
 })
-// app.use('/*' , (req , res) => {
-//     return res.sendFile(path.join(__dirname , '..' , 'public' , 'index.html'));
-// })
+app.use('/*' , (req , res) => {
+    return res.sendFile(path.join(__dirname , '..' , 'public' , 'index.html'));
+})
 
 module.exports = app;

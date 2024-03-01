@@ -2,17 +2,10 @@ import React from 'react'
 
 const Login = () => {
   const redirectToGoogle = async () => {
-    await fetch('/auth/google')
-    window.location.href = '/'
+    window.location.href = '/auth/google'
   }
   const redirectToGithub = async () => {
-    try {
-      await fetch('/auth/github')
-      window.location.href = '/'
-    }
-    catch(err) {
-      console.log(err)
-    }
+    window.location.href = '/auth/github'
   }
   return (
     <div className="login">
