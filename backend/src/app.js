@@ -61,7 +61,7 @@ passport.deserializeUser((user , done) => {
     done(null , user)
 })
 
-app.use(express.static(path.join(__dirname , '..' , 'public')));
+// app.use(express.static(path.join(__dirname , '..' , 'public')));
 
 // setting up google authentication
 
@@ -107,8 +107,8 @@ app.get('/auth/logout' , (req  , res) => {
     req.logout();
     return res.redirect('/')
 })
-app.use('/*' , (req , res) => {
-    return res.sendFile(path.join(__dirname , '..' , 'public' , 'index.html'));
-})
+// app.use('/*' , (req , res) => {
+//     return res.sendFile(path.join(__dirname , '..' , 'public' , 'index.html'));
+// })
 
 module.exports = app;
