@@ -7,9 +7,8 @@ const passport = require('passport');
 const cookieSession = require('cookie-session')
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const GithubStrategy = require('passport-github2').Strategy;
-
 const data = require('../../data/data');
-
+const redirectURI = process.env.NODE_ENV === 'production'? '' : process.env.redirectURI;
 const app = express();
 
 function checkLoggedIn(req , res , next){
@@ -61,14 +60,11 @@ passport.deserializeUser((user , done) => {
     done(null , user)
 })
 
-// app.use(express.static(path.join(__dirname , '..' , 'public')));
-
 // setting up google authentication
-
 app.get('/auth/google' , passport.authenticate('google' , {scope: ['email']}))
 app.get('/auth/google/callback' , passport.authenticate('google' , {
-    failureRedirect: '/login',
-    successRedirect: '/',
+    failureRedirect: `${redirectURI}/login`,
+    successRedirect: `${redirectURI}/`,
     session: true
 }) , 
 (req , res) => {
@@ -79,8 +75,8 @@ app.get('/auth/google/callback' , passport.authenticate('google' , {
 
 app.get('/auth/github' , passport.authenticate('github' , {scope: ['user:email']}));
 app.get('/auth/github/callback' , passport.authenticate('github' , {
-    failureRedirect: '/login',
-    successRedirect: '/',
+    failureRedirect: `${redirectURI}/login`,
+    successRedirect: `${redirectURI}/`,
     session: true
 }) , 
 (req , res) => {
@@ -107,8 +103,11 @@ app.get('/auth/logout' , (req  , res) => {
     req.logout();
     return res.redirect('/')
 })
-// app.use('/*' , (req , res) => {
-//     return res.sendFile(path.join(__dirname , '..' , 'public' , 'index.html'));
-// })
+if(process.env.NODE_ENV === 'production'){
+    app.use(express.static(path.join(__dirname , '..' , 'public')));
+    app.use('/*' , (req , res) => {
+        return res.sendFile(path.join(__dirname , '..' , 'public' , 'index.html'));
+    })
+}
 
 module.exports = app;
