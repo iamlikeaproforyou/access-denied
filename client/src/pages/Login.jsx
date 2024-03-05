@@ -1,10 +1,9 @@
 import React from 'react'
-
 const Login = () => {
-  const redirectToGoogle = async () => {
+  const redirectToGoogle = () => {
     window.location.href = '/auth/google'
   }
-  const redirectToGithub = async () => {
+  const redirectToGithub = () => {
     window.location.href = '/auth/github'
   }
   return (

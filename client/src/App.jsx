@@ -1,4 +1,4 @@
-import './App.css';
+import './App.css'
 import Navbar from './components/Navbar';
 import Blog from './pages/Blog';
 import Login from './pages/Login';
@@ -17,7 +17,7 @@ function App() {
         </Routes>
       </div>
     </BrowserRouter>
-  );
+  )
 }
 
-export default App;
+export default App
