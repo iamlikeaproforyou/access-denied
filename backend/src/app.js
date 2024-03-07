@@ -8,7 +8,7 @@ const cookieSession = require('cookie-session')
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const GithubStrategy = require('passport-github2').Strategy;
 const data = require('../../data/data');
-const redirectURI = process.env.NODE_ENV === 'production'? '' : process.env.redirectURI;
+const redirectURI = process.env.NODE_ENV === 'production'? '' : process.env.react_app_url;
 const app = express();
 
 function checkLoggedIn(req , res , next){
