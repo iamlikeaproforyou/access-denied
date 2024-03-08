@@ -5,6 +5,7 @@ const express = require('express');
 const cors = require('cors');
 const passport = require('passport');
 const cookieSession = require('cookie-session')
+const bcrypt = require('bcrypt');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const GithubStrategy = require('passport-github2').Strategy;
 const LocalStrategy = require('passport-local').Strategy;
@@ -53,7 +54,8 @@ passport.use(new LocalStrategy({ usernameField: 'email' },
         try{
             const userDB = await User.findOne({ email })
             if(userDB) {
-                if(password === userDB.password){
+                const isEqual = await bcrypt.compare(password , userDB.password)
+                if(isEqual){
                     done(null , userDB)
                 }
                 else{
@@ -61,7 +63,8 @@ passport.use(new LocalStrategy({ usernameField: 'email' },
                 }
             }
             else{
-                const newUser = await setUser({email , password})
+                const hashedPass = await bcrypt.hash(password , 7)
+                const newUser = await setUser({email:email , password: hashedPass})
                 done(null , newUser)
             }
         }
