@@ -4,10 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "deploy": "npm run build --prefix frontend && npm start --prefix backend",
-    "server" : "npm start --prefix backend"
+    "deploy": "npm run build --prefix client && npm start --prefix backend",
+    "server": "npm start --prefix backend",
+    "dev": "concurrently \"npm run dev --prefix client\" \"npm run server\""
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  }
 }
