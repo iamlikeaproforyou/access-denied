@@ -12,6 +12,7 @@ const Navbar = () => {
       console.log(err);
     }
   }
+  console.log(profile)
   return (
     <div className='navigation'>
         <h1><Link to="/" className='logo-text'>Access-Denied</Link></h1>

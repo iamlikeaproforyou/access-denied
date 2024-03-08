@@ -7,6 +7,9 @@ const passport = require('passport');
 const cookieSession = require('cookie-session')
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const GithubStrategy = require('passport-github2').Strategy;
+const LocalStrategy = require('passport-local').Strategy;
+const User = require('./user/user.mongo')
+const { setUser } = require('./user/user.model')
 const data = require('../../data/data');
 const redirectURI = process.env.NODE_ENV === 'production'? '' : process.env.react_app_url;
 const app = express();
@@ -45,13 +48,35 @@ passport.use(new GithubStrategy({
 } , function(accessToken , refreshToken , profile , done) {
     done(null , profile)
 }))
-
+passport.use(new LocalStrategy({ usernameField: 'email' },
+    async (email , password , done) => {
+        try{
+            const userDB = await User.findOne({ email })
+            if(userDB) {
+                if(password === userDB.password){
+                    done(null , userDB)
+                }
+                else{
+                    done(null , null)
+                }
+            }
+            else{
+                const newUser = await setUser({email , password})
+                done(null , newUser)
+            }
+        }
+        catch(err) {
+            done(err, null);
+        }
+        
+    }
+))
 // setting the user into the cookie
 passport.serializeUser((user , done) => {
-    const photoWithValue = user.photos.find(photo => photo.value)
+    const photoWithValue = user.photo || user.photos.find(photo => photo.value).value;
     const userObj = {
         id: user.id,
-        photo: photoWithValue.value
+        photo: photoWithValue
     }
     done(null , userObj)
 })
@@ -61,7 +86,7 @@ passport.deserializeUser((user , done) => {
 })
 
 // setting up google authentication
-app.get('/auth/google' , passport.authenticate('google' , {scope: ['email']}))
+app.get('/auth/google' , passport.authenticate('google' , {scope: ['profile']}))
 app.get('/auth/google/callback' , passport.authenticate('google' , {
     failureRedirect: `${redirectURI}/login`,
     successRedirect: `${redirectURI}/`,
@@ -82,6 +107,19 @@ app.get('/auth/github/callback' , passport.authenticate('github' , {
 (req , res) => {
     console.log('Github called us back ') 
 });
+
+// using passport local strategy
+
+app.post('/api/login' , passport.authenticate('local' , {
+    failureRedirect: `${redirectURI}/login`,
+    successRedirect: `${redirectURI}/`,
+}) , (req , res) => {
+    res.sendStatus(200);
+})
+
+// app.post('/auth/login' , (req , res) => {
+//     user.setUser(req.body)
+// })
 
 // internal apis
 app.get('/api/' , (req , res) => {
