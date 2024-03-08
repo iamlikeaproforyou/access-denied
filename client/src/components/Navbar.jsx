@@ -18,7 +18,7 @@ const Navbar = () => {
         <h1><Link to="/" className='logo-text'>Access-Denied</Link></h1>
         <ul className='list'>
             {profile.id? <li><img src={profile.photo} alt="" className='profile-photo'/></li>: <li></li>}
-            <li><Link to="/" className='list-item'>Blog</Link></li>
+            <li><Link to="https://github.com/iamlikeaproforyou/access-denied" className='list-item'>Github</Link></li>
             {profile.id ? 
               <li><Link className='list-item login-btn' onClick={() => {handleLogout()}}>Logout</Link></li>
               :

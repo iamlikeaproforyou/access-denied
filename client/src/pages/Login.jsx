@@ -33,7 +33,6 @@ const Login = () => {
         <div className="methods">
           <button onClick={() => {redirectToGithub()}}>GITHUB</button>
           <button onClick={() => {redirectToGoogle()}}>GOOGLE</button>
-          <button>FACEBOOK</button>
         </div>
         <div >
           <form className='form' onSubmit={handleSubmit}>

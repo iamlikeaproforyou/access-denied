@@ -72,7 +72,7 @@
   background-color: bisque;
   margin: 1rem 1rem;
   display: flex;
-  width: 28%;
+  width: 26%;
   flex-direction: column;
   padding: 10px;
   min-height: 35rem;
@@ -208,4 +208,48 @@ img {
   justify-content: center;
   align-items: center;
   font-size: 1.5rem;
+}
+.footer{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: bisque;
+}
+.error-container {
+  height: 90vh;
+}
+@media screen and (max-width:800px){
+  .cards-container {
+    flex-direction: column;
+  }
+  .card {
+    width: 70%;
+  }
+  .login-container {
+    flex-direction: column-reverse;
+    width: 100%;
+  }
+  .login {
+    height: auto;
+    margin: 10px 0px;
+  }
+  input {
+    width: 100%;
+  }
+  .login-container > div {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width:550px) {
+  *{
+    font-size: 10px;
+  }
+}
+
+@media screen and (max-width:350px) {
+  *{
+    font-size: 7px;
+  }
 }

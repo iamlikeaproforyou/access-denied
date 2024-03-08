@@ -1,11 +1,10 @@
-const path = require('path');
-
 require('dotenv').config();
+
+const path = require('path');
 const express = require('express');
-const cors = require('cors');
 const passport = require('passport');
-const cookieSession = require('cookie-session')
 const bcrypt = require('bcrypt');
+const cookieSession = require('cookie-session')
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const GithubStrategy = require('passport-github2').Strategy;
 const LocalStrategy = require('passport-local').Strategy;
@@ -29,9 +28,6 @@ app.use(cookieSession({
     maxAge:  60 * 60 * 1000,
     keys: [process.env.cookie_key]
 }))
-// app.use(cors({
-//     origin: 'http://localhost:3000'
-// }))
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.json());
@@ -119,10 +115,6 @@ app.post('/api/login' , passport.authenticate('local' , {
 }) , (req , res) => {
     res.sendStatus(200);
 })
-
-// app.post('/auth/login' , (req , res) => {
-//     user.setUser(req.body)
-// })
 
 // internal apis
 app.get('/api/' , (req , res) => {

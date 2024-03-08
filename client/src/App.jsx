@@ -15,6 +15,7 @@ function App() {
           <Route path="/blog/:id" element={<Blog />} />
           <Route path="/auth" element={<Login />} />
         </Routes>
+        <div className='footer'>Made with ❤️ by Likeapro</div>
       </div>
     </BrowserRouter>
   )
