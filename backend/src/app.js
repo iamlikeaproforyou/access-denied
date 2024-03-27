@@ -12,6 +12,7 @@ const User = require('./user/user.mongo')
 const { setUser } = require('./user/user.model')
 const data = require('../../data/data');
 const redirectURI = process.env.NODE_ENV === 'production'? '' : process.env.react_app_url;
+const callbackURI = process.env.NODE_ENV === 'production'? process.env.CALLBACK_URL : '';
 const app = express();
 
 function checkLoggedIn(req , res , next){
@@ -34,14 +35,14 @@ app.use(express.json());
 passport.use(new GoogleStrategy({
     clientID: process.env.google_client_id,
     clientSecret: process.env.google_client_secret,
-    callbackURL: '/auth/google/callback'
+    callbackURL: `${callbackURI}/auth/google/callback`
 } , function (acessToken , refreshToken , profile , done) {
     done(null , profile)
 }))
 passport.use(new GithubStrategy({
     clientID: process.env.github_client_id,
     clientSecret: process.env.github_client_secret,
-    callbackURL: '/auth/github/callback'
+    callbackURL: `${callbackURI}/auth/github/callback`
 } , function(accessToken , refreshToken , profile , done) {
     done(null , profile)
 }))
